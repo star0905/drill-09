@@ -27,6 +27,8 @@ def handle_events():
                 dir_y += 1
             elif event.key == SDLK_DOWN:
                 dir_y -= 1
+            elif event.key == SDLK_ESCAPE:
+                running = False
 
  
 running = True
