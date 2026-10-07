@@ -52,3 +52,6 @@ dir_x = 0       # -1: 왼쪽, 0: 정지, 1: 오른쪽
 dir_y = 0       # -1: 아래, 0: 정지, 1: 위
 face_dir = 1 # 1: 오른쪽, -1: 왼쪽
 
+while running:
+    clear_canvas()
+    background.draw(canvas_width // 2, canvas_height // 2, canvas_width, canvas_height)
