@@ -1,17 +1,17 @@
 from pico2d import *
- 
+
 canvas_width = 1280
 canvas_height = 1024
 
 open_canvas(canvas_width, canvas_height)
-
 background = load_image('TUK_GROUND.png')
 character = load_image('animation_sheet.png')
+
 
 def handle_events():
     global running
     global dir_x, dir_y, face_dir
- 
+
     events = get_events()
     for event in events:
         if event.type == SDL_QUIT:
@@ -43,22 +43,25 @@ def handle_events():
     # 좌우로 움직이는 중이면 그 방향을 바라봄 (위아래만 움직일 때는 기존 방향 유지)
     if dir_x != 0:
         face_dir = dir_x
- 
+
+
 running = True
 x = canvas_width // 2
 y = canvas_height // 2
 frame = 0
 dir_x = 0       # -1: 왼쪽, 0: 정지, 1: 오른쪽
 dir_y = 0       # -1: 아래, 0: 정지, 1: 위
-face_dir = 1 # 1: 오른쪽, -1: 왼쪽
+face_dir = 1    # 1: 오른쪽, -1: 왼쪽
 
+# 스프라이트 시트(100x100, 8프레임), y 값은 아래쪽부터:
+#   0: 왼쪽 달리기, 100: 오른쪽 달리기, 200: 왼쪽 IDLE, 300: 오른쪽 IDLE
 while running:
     clear_canvas()
     background.draw(canvas_width // 2, canvas_height // 2, canvas_width, canvas_height)
 
     if dir_x != 0 or dir_y != 0:        # 이동 중
-      if face_dir == 1:
-          character.clip_draw(frame * 100, 100, 100, 100, x, y)
+        if face_dir == 1:
+            character.clip_draw(frame * 100, 100, 100, 100, x, y)
         else:
             character.clip_draw(frame * 100, 0, 100, 100, x, y)
     else:                               # IDLE
@@ -67,21 +70,17 @@ while running:
         else:
             character.clip_draw(frame * 100, 200, 100, 100, x, y)
 
-    x += dir_x * 5
-    y += dir_y * 5
-            
-    frame = (frame + 1) % 8
-
-    # 화면 경계를 벗어나지 않도록 제한 (캐릭터 절반 크기만큼 여유)
-    x = clamp(50, x, canvas_width - 50)
-    y = clamp(50, y, canvas_height - 50)
-
     update_canvas()
     handle_events()
 
+    x += dir_x * 5
+    y += dir_y * 5
+    # 화면 경계를 벗어나지 않도록 제한
+    x = clamp(50, x, canvas_width - 50)
+    y = clamp(50, y, canvas_height - 50)
 
-
+    frame = (frame + 1) % 8
     delay(0.05)
- 
+
 close_canvas()
  
