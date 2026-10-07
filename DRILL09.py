@@ -58,6 +58,9 @@ while running:
 
     if dir_x != 0 or dir_y != 0:        # 이동 중
       if face_dir == 1:
+          character.clip_draw(frame * 100, 100, 100, 100, x, y)
+        else:
+            character.clip_draw(frame * 100, 0, 100, 100, x, y)
           
 
     update_canvas()
