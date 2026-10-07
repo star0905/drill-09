@@ -29,6 +29,16 @@ def handle_events():
                 dir_y -= 1
             elif event.key == SDLK_ESCAPE:
                 running = False
+        elif event.type == SDL_KEYUP:
+            # KEYDOWN의 반대로 되돌려야 함 (왼쪽 키를 떼면 +1, 오른쪽 키를 떼면 -1)
+            if event.key == SDLK_LEFT:
+                dir_x += 1
+            elif event.key == SDLK_RIGHT:
+                dir_x -= 1
+            elif event.key == SDLK_UP:
+                dir_y -= 1
+            elif event.key == SDLK_DOWN:
+                dir_y += 1
 
  
 running = True
