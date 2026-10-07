@@ -11,7 +11,7 @@ character = load_image('animation_sheet.png')
 def handle_events():
     global running
     global dir_x, dir_y, face_dir
-
+ 
     events = get_events()
     for event in events:
         if event.type == SDL_QUIT:
@@ -40,6 +40,9 @@ def handle_events():
             elif event.key == SDLK_DOWN:
                 dir_y += 1
 
+    # 좌우로 움직이는 중이면 그 방향을 바라봄 (위아래만 움직일 때는 기존 방향 유지)
+    if dir_x != 0:
+        face_dir = dir_x
  
 running = True
 x = canvas_width // 2
