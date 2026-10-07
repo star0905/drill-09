@@ -3,10 +3,10 @@ from pico2d import *
 canvas_width = 1280
 canvas_height = 1024
 
+# 이미지 불러오기
 open_canvas(canvas_width, canvas_height)
 background = load_image('TUK_GROUND.png')
 character = load_image('animation_sheet.png')
-
 
 def handle_events():
     global running
@@ -14,20 +14,20 @@ def handle_events():
 
     events = get_events()
     for event in events:
-        if event.type == SDL_QUIT:
+        if event.type == SDL_QUIT: #중단
             running = False
         elif event.type == SDL_KEYDOWN:
-            if event.key == SDLK_LEFT:
+            if event.key == SDLK_LEFT: #좌우이동 및 방향 전환
                 dir_x -= 1
                 face_dir = -1
             elif event.key == SDLK_RIGHT:
                 dir_x += 1
                 face_dir = 1
-            elif event.key == SDLK_UP:
+            elif event.key == SDLK_UP: #상하이동
                 dir_y += 1
-            elif event.key == SDLK_DOWN:
+            elif event.key == SDLK_DOWN: 
                 dir_y -= 1
-            elif event.key == SDLK_ESCAPE:
+            elif event.key == SDLK_ESCAPE: #중단
                 running = False
         elif event.type == SDL_KEYUP:
             # KEYDOWN의 반대로 되돌려야 함 (왼쪽 키를 떼면 +1, 오른쪽 키를 떼면 -1)
@@ -59,7 +59,7 @@ while running:
     clear_canvas()
     background.draw(canvas_width // 2, canvas_height // 2, canvas_width, canvas_height)
 
-    if dir_x != 0 or dir_y != 0:        # 이동 중
+    if dir_x != 0 or dir_y != 0:        # 이동 시
         if face_dir == 1:
             character.clip_draw(frame * 100, 100, 100, 100, x, y)
         else:
