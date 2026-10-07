@@ -67,6 +67,11 @@ while running:
         else:
             character.clip_draw(frame * 100, 200, 100, 100, x, y)
 
+    x += dir_x * 5
+    y += dir_y * 5
+            
+    frame = (frame + 1) % 8
+
     update_canvas()
     handle_events()
 
