@@ -55,3 +55,11 @@ face_dir = 1 # 1: 오른쪽, -1: 왼쪽
 while running:
     clear_canvas()
     background.draw(canvas_width // 2, canvas_height // 2, canvas_width, canvas_height)
+
+    update_canvas()
+    handle_events()
+
+    delay(0.05)
+ 
+close_canvas()
+ 
