@@ -72,6 +72,10 @@ while running:
             
     frame = (frame + 1) % 8
 
+    # 화면 경계를 벗어나지 않도록 제한 (캐릭터 절반 크기만큼 여유)
+    x = clamp(50, x, canvas_width - 50)
+    y = clamp(50, y, canvas_height - 50)
+
     update_canvas()
     handle_events()
 
