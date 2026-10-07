@@ -56,8 +56,14 @@ while running:
     clear_canvas()
     background.draw(canvas_width // 2, canvas_height // 2, canvas_width, canvas_height)
 
+    if dir_x != 0 or dir_y != 0:        # 이동 중
+      if face_dir == 1:
+          
+
     update_canvas()
     handle_events()
+
+
 
     delay(0.05)
  
