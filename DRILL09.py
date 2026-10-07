@@ -11,6 +11,19 @@ character = load_image('animation_sheet.png')
 def handle_events():
     global running
     global dir_x, dir_y, face_dir
+
+    events = get_events()
+    for event in events:
+        if event.type == SDL_QUIT:
+            running = False
+         elif event.type == SDL_KEYDOWN:
+            if event.key == SDLK_LEFT:
+                dir_x -= 1
+                face_dir = -1
+            elif event.key == SDLK_RIGHT:
+                dir_x += 1
+                face_dir = 1
+
  
 running = True
 x = canvas_width // 2
