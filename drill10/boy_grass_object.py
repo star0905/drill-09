@@ -11,7 +11,9 @@ class Ball:
      self.x, self.y = random.randint(100, 700), 90
     
     def draw(self):
-        self.image.clip_draw(self.frame * 100, 0, 100, 100, self.x, self.y)
+        self.image.draw(self.x, self.y)
+    def update(self):
+        self.y += speed
 
 class Grass:
     def __init__(self):
@@ -44,6 +46,7 @@ def reset_world():
 
     world.append(grass)
     team = [Boy() for i in range(11)]
+   
     world += team
 
 
