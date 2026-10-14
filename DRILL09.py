@@ -1,6 +1,6 @@
 from pico2d import *
 
-canvas_width = 1280
+canvas_width = 1282
 canvas_height = 1024
 
 # 이미지 불러오기
