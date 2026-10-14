@@ -3,11 +3,13 @@ import random
 
 # Game object class here
 
+speed = random.randint(10, 20)
+
 class Ball:
     def _init_(self):
      self.image = load_image('ball41x41')
      self.x, self.y = random.randint(100, 700), 90
-
+    
     def draw(self):
         self.image.clip_draw(self.frame * 100, 0, 100, 100, self.x, self.y)
 
@@ -35,6 +37,7 @@ class Boy:
 def reset_world():
     global running
     global world
+    global speed
     running = True
     world = []
     grass = Grass()
