@@ -7,7 +7,7 @@ canvas_height = 1024
 open_canvas(canvas_width, canvas_height)
 background = load_image('TUK_GROUND.png')
 character = load_image('animation_sheet.png')
-
+# ggggg
 def handle_events():
     global running
     global dir_x, dir_y, face_dir
@@ -83,4 +83,5 @@ while running:
     delay(0.05)
 
 close_canvas()
- 
+
+ # ㅎㄹㄹㄹㄹ

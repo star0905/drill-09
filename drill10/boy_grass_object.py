@@ -12,8 +12,8 @@ class Ball:
     
     def draw(self):
         self.image.draw(self.x, self.y)
-    def update(self):
-        self.y += speed
+    def update(self):   
+        self.y += random.randint(10, 20)
 
 class Grass:
     def __init__(self):
